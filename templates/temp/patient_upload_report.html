@@ -1,0 +1,36 @@
+{% extends 'temp/patientbase.html' %}
+{% block content %}
+{% load static %}
+
+<div class='container'>
+<br>
+<br>
+<br>
+<form method='post' action=''  enctype="multipart/form-data">
+{% csrf_token %}
+  <div class="form-group">
+    <label for="Testname">Test Name</label>
+    <input type="name" class="form-control" id="testname" name ='testname' aria-describedby="namelHelp">
+    <small id="nameHelp" class="form-text text-muted">We'll never share your personal information with anyone else.</small>
+  </div>
+   <div class="form-group">
+    <label for="Testname">Test Date</label>
+    <input type="date" class="form-control" id="testdate" name ='testdate'>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Note For Doctor</label>
+    <textarea class="form-control" id="desc" name ='desc' rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Upload Report</label>
+    <input type="file"  accept="image/*" capture="camera" class="form-control-file" id="report" name ="report">
+    {% comment %} <input type="file" accept="image/*" capture> {% endcomment %}
+  </div>
+  {%for message in messages%}
+        <p id = 'messages'>{{message}}</p>
+	{% endfor %}
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+{% endblock content %}
